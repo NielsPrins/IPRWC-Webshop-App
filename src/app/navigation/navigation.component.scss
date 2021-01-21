@@ -1,0 +1,19 @@
+.navbar-brand, .nav-link, .navbar-toggler {
+  color: #FFF !important;
+}
+
+.nav-item > .nav-link, .nav-buttons > img {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 992px) {
+  .nav-button-text-replacement {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .nav-buttons {
+    display: none !important;
+  }
+}

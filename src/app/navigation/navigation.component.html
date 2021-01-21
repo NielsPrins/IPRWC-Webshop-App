@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-primary mb-3">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="'.'">Sweater Shop</a>
+
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
+
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Home</a>
+        </li>
+
+        <li class="nav-item nav-button-text-replacement">
+          <a class="nav-link" [routerLink]="'/shopping-cart'" (click)="isMenuCollapsed = true">Shopping cart</a>
+        </li>
+        <li class="nav-item nav-button-text-replacement">
+          <a class="nav-link" [routerLink]="'/login'" (click)="isMenuCollapsed = true">Account</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-buttons d-flex">
+      <img class="nav-link" src="/assets/shopping-bag-line.svg" alt="">
+      <img class="nav-link" [routerLink]="appService.getUser() ? '/account': '/login'" src="/assets/user-line.svg" alt="">
+    </div>
+  </div>
+</nav>
