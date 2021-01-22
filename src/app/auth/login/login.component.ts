@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit() {
+  submit(): void {
     this.api.post('/user/checkLogin', this.form.value).then((res) => {
       if (res.data.login === 'success') {
         this.appService.setUser(res.data.token);
