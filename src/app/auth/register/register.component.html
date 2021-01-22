@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-6 form-container">
-      <form [formGroup]="form" (ngSubmit)="submit()" class="w-100">
+      <form [formGroup]="form" class="w-100">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name"
@@ -32,8 +32,9 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button (click)="submitForm()" type="submit" class="btn btn-primary">Register</button>
         <button [routerLink]="'/login'" class="btn btn-outline-primary float-right">Login</button>
+        <re-captcha #captchaRef="reCaptcha" (resolved)="resolved($event)" errorMode="handled" siteKey="6Le2dzYaAAAAAPNlZUEHmcz6HZHwhKMu4fqwdHt5" size="invisible" ></re-captcha>
       </form>
     </div>
     <div class="col-xl-6">

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../api.service';
 import {Router} from '@angular/router';
@@ -10,7 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('captchaRef') captchaRef: ElementRef;
   public form: FormGroup = new FormGroup({});
+  private recaptchaToken = '';
   public registerFailed = false;
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
@@ -26,11 +28,29 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public submitForm(): void {
+    if (!this.recaptchaToken) {
+      this.captchaRef.execute();
+    } else {
+      this.submit();
+    }
   }
 
-  submit() {
-    this.api.put('/user', this.form.value).then((res) => {
+  public resolved(captchaResponse: string): void {
+    this.recaptchaToken = captchaResponse;
+    if (captchaResponse !== null) {
+      this.submit();
+    }
+  }
+
+  submit(): void {
+    if (!this.form.valid) {
+      this.registerFailed = true;
+      return;
+    }
+
+    const recaptchaData = {token: this.recaptchaToken};
+    this.api.post('/user', {...this.form.value, ...recaptchaData}).then((res) => {
       if (res.data.result) {
         Swal.fire({
           title: 'Account has been created',
@@ -41,9 +61,11 @@ export class RegisterComponent implements OnInit {
         });
       } else {
         this.registerFailed = true;
+        this.captchaRef.reset();
       }
     }).catch(() => {
       this.registerFailed = true;
+      this.captchaRef.reset();
     });
   }
 

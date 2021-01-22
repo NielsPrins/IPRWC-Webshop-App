@@ -10,6 +10,7 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {AppService} from './app.service';
+import {RecaptchaModule} from 'ng-recaptcha';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {AppService} from './app.service';
     FormsModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
+    RecaptchaModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

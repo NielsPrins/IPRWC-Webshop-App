@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-xl-6 form-container">
-      <form [formGroup]="form" (ngSubmit)="submit()" class="w-100">
+      <form [formGroup]="form" class="w-100">
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter email"
@@ -17,9 +17,10 @@
           <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password"
                  [ngClass]="{'is-invalid':  this.loginFailed || (this.form.controls.password.touched && this.form.controls.password.invalid)}">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button (click)="submitForm()" class="btn btn-primary">Login</button>
         <button [routerLink]="'/register'" class="btn btn-outline-primary float-right">Register</button>
       </form>
+      <re-captcha #captchaRef="reCaptcha" (resolved)="resolved($event)" errorMode="handled" siteKey="6Le2dzYaAAAAAPNlZUEHmcz6HZHwhKMu4fqwdHt5" size="invisible" ></re-captcha>
     </div>
   </div>
 </div>
