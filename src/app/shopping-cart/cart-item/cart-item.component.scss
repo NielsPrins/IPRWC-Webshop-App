@@ -10,6 +10,12 @@
 .remove-button {
   display: flex;
 
+  &:hover, &:active {
+    img {
+      filter: brightness(100);
+    }
+  }
+
   img {
     height: 21px;
     margin-right: 3px;

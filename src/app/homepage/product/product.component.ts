@@ -12,7 +12,8 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
   public quantity = 1;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService) {
+  }
 
   ngOnInit(): void {
   }
@@ -36,6 +37,10 @@ export class ProductComponent implements OnInit {
       icon: 'success',
       title: 'Product added to cart'
     });
+  }
+
+  public onlyIntegers(event): boolean {
+    return !isNaN(event.key);
   }
 
 }

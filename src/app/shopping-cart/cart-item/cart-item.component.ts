@@ -22,6 +22,9 @@ export class CartItemComponent implements OnInit {
   }
 
   public quantityChanged(): void {
+    if (!(Number.isInteger(this.quantity) || this.quantity > 0)) {
+      return;
+    }
     this.appService.updateProductQuantityInCart(this.product, this.quantity);
     this.updateTotalCartPrice.emit();
   }
@@ -32,6 +35,9 @@ export class CartItemComponent implements OnInit {
   }
 
   public quantitySubtractOne(): void {
+    if (this.quantity <= 1) {
+      return;
+    }
     this.quantity -= 1;
     this.quantityChanged();
   }
@@ -39,6 +45,10 @@ export class CartItemComponent implements OnInit {
   public removeProduct(): void {
     this.appService.removeProductFromCart(this.product);
     this.updateTotalCartPrice.emit();
+  }
+
+  public onlyIntegers(event): boolean {
+    return !isNaN(event.key);
   }
 
 }

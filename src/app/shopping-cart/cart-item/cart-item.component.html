@@ -15,11 +15,11 @@
 
       <div class="quantity-input input-group input-group-sm mb-3">
         <div class="input-group-prepend">
-          <button (click)="quantitySubtractOne()" class="btn btn-primary" type="button">
+          <button (click)="quantitySubtractOne()" [ngClass]="{'disabled': quantity <= 1}" class="btn btn-primary" type="button">
             <img src="/assets/subtract-line.svg" alt="Subtract">
           </button>
         </div>
-        <input [(ngModel)]="quantity" (ngModelChange)="quantityChanged()" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        <input [(ngModel)]="quantity" (ngModelChange)="quantityChanged()" (keypress)="onlyIntegers($event)" type="text" class="form-control">
         <div class="input-group-append">
           <button (click)="quantityAddOne()" class="btn btn-primary" type="button">
             <img src="/assets/add-line.svg" alt="Add">
