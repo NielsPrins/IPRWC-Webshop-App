@@ -2,8 +2,24 @@
   color: #FFF !important;
 }
 
-.nav-item > .nav-link, .nav-buttons > img {
+.nav-item > .nav-link, .nav-buttons > .nav-link {
   cursor: pointer;
+}
+
+.shopping-cart-icon{
+  height: 40px;
+  position: relative;
+
+  span.quantity{
+    font-size: 65%;
+    background-color: white;
+    color: black;
+    position: absolute;
+    right: 8px;
+    bottom: 1px;
+    padding-right: 0.4em;
+    padding-left: 0.4em;
+  }
 }
 
 @media only screen and (min-width: 992px) {

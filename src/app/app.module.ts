@@ -12,6 +12,8 @@ import {RegisterComponent} from './auth/register/register.component';
 import {AppService} from './app.service';
 import {RecaptchaModule} from 'ng-recaptcha';
 import {ProductComponent} from './homepage/product/product.component';
+import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
+import {AccountComponent} from './account/account.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {ProductComponent} from './homepage/product/product.component';
     NavigationComponent,
     LoginComponent,
     RegisterComponent,
-    ProductComponent
+    ProductComponent,
+    ShoppingCartComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

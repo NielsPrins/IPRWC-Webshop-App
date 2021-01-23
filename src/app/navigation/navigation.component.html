@@ -10,8 +10,8 @@
           <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Home</a>
         </li>
 
-        <li class="nav-item nav-button-text-replacement">
-          <a class="nav-link" [routerLink]="'/shopping-cart'" (click)="isMenuCollapsed = true">Shopping cart</a>
+        <li *ngIf="appService.cart.length > 0" class="nav-item nav-button-text-replacement">
+          <a class="nav-link" [routerLink]="'/shopping-cart'" (click)="isMenuCollapsed = true">Shopping cart ({{ appService.cart.length }})</a>
         </li>
         <li class="nav-item nav-button-text-replacement">
           <a class="nav-link" [routerLink]="'/login'" (click)="isMenuCollapsed = true">Account</a>
@@ -19,7 +19,10 @@
       </ul>
     </div>
     <div class="nav-buttons d-flex">
-      <img class="nav-link" src="/assets/shopping-bag-line.svg" alt="">
+      <div *ngIf="appService.cart.length > 0" [routerLink]="'/shopping-cart'" class="nav-link shopping-cart-icon">
+        <img src="/assets/shopping-bag-line.svg" alt="">
+        <span class="quantity badge badge-pill">{{ appService.cart.length }}</span>
+      </div>
       <img class="nav-link" [routerLink]="appService.user ? '/account': '/login'" src="/assets/user-line.svg" alt="">
     </div>
   </div>
