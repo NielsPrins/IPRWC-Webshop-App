@@ -14,6 +14,7 @@ import {RecaptchaModule} from 'ng-recaptcha';
 import {ProductComponent} from './homepage/product/product.component';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {AccountComponent} from './account/account.component';
+import {CartItemComponent} from './shopping-cart/cart-item/cart-item.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {AccountComponent} from './account/account.component';
     RegisterComponent,
     ProductComponent,
     ShoppingCartComponent,
-    AccountComponent
+    AccountComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

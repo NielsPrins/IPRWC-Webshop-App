@@ -26,14 +26,39 @@ export class AppService {
     this.user = jwt_decode(token) as User;
   }
 
-  public addToCart(product: Product, quantity: number): void {
+  public saveCartToCookie(): void {
+    Cookie.set('cart', JSON.stringify(this.cart), 7, '/');
+  }
+
+  public addProductToCart(product: Product, quantity: number): void {
     for (const cartItem of this.cart) {
       if (cartItem.product.id === product.id) {
         cartItem.quantity += quantity;
+        this.saveCartToCookie();
         return;
       }
     }
     this.cart.push({product, quantity});
-    Cookie.set('cart', JSON.stringify(this.cart), 7, '/');
+    this.saveCartToCookie();
+  }
+
+  public removeProductFromCart(product: Product): void {
+    this.cart.forEach((cartItem, index) => {
+      if (cartItem.product.id === product.id) {
+        this.cart.splice(index, 1);
+        this.saveCartToCookie();
+        return;
+      }
+    });
+  }
+
+  public updateProductQuantityInCart(product: Product, quantity: number): void {
+    for (const cartItem of this.cart) {
+      if (cartItem.product.id === product.id) {
+        cartItem.quantity = quantity;
+        this.saveCartToCookie();
+        return;
+      }
+    }
   }
 }

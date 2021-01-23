@@ -1,0 +1,36 @@
+<div class="container-fluid mb-3">
+  <div class="d-flex justify-content-between">
+
+    <div class="d-flex">
+      <img class="product-image img-fluid mr-3" src="{{ product.image }}" alt="{{ product.title }}">
+
+      <div>
+        <h5>{{ product.title }}</h5>
+        <div>{{ product.description }}</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="mb-3 w-100 btn btn-sm btn-outline-primary disabled">&euro; {{ product.price }}</div>
+
+      <div class="quantity-input input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <button (click)="quantitySubtractOne()" class="btn btn-primary" type="button">
+            <img src="/assets/subtract-line.svg" alt="Subtract">
+          </button>
+        </div>
+        <input [(ngModel)]="quantity" (ngModelChange)="quantityChanged()" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        <div class="input-group-append">
+          <button (click)="quantityAddOne()" class="btn btn-primary" type="button">
+            <img src="/assets/add-line.svg" alt="Add">
+          </button>
+        </div>
+      </div>
+
+      <button (click)="removeProduct()" class="remove-button w-100 btn btn-sm btn-outline-danger">
+        <img src="/assets/delete-bin-line.svg" alt="Remove">
+        Remove</button>
+    </div>
+
+  </div>
+</div>

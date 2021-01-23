@@ -1,0 +1,30 @@
+.product-image {
+  max-height: 200px;
+}
+
+.remove-button{
+  display: flex;
+  img{
+    height: 21px;
+    margin-right: 3px;
+  }
+}
+
+.quantity-input {
+  input {
+    width: 2.5rem;
+    flex: none;
+    text-align: center;
+  }
+
+  button {
+    padding: 0;
+    height: 31px;
+    width: 31px;
+
+    img {
+      height: 100%;
+      width: 70%;
+    }
+  }
+}
