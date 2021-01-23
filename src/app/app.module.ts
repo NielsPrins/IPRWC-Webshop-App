@@ -11,6 +11,7 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {AppService} from './app.service';
 import {RecaptchaModule} from 'ng-recaptcha';
+import {ProductComponent} from './homepage/product/product.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {RecaptchaModule} from 'ng-recaptcha';
     HomepageComponent,
     NavigationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

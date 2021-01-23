@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../api.service';
 import {Router} from '@angular/router';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('captchaRef') captchaRef: ElementRef;
+  @ViewChild('captchaRef') captchaRef: any;
   public form: FormGroup = new FormGroup({});
   private recaptchaToken = '';
   public registerFailed = false;
@@ -26,6 +26,9 @@ export class RegisterComponent implements OnInit {
         Validators.pattern('^(?=.*[A-Z])(?=.*[\\W])(?=.*[0-9])(?=.*[a-z]).{8,35}$')
       ]],
     });
+  }
+
+  ngOnInit(): void {
   }
 
   public submitForm(): void {
@@ -54,7 +57,7 @@ export class RegisterComponent implements OnInit {
       if (res.data.result) {
         Swal.fire({
           title: 'Account has been created',
-          text: 'Check your email to verify your account',
+          // text: 'Check your email to verify your account',
           confirmButtonText: 'Login'
         }).then(() => {
           return this.router.navigate(['/login']);

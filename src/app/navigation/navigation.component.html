@@ -20,7 +20,7 @@
     </div>
     <div class="nav-buttons d-flex">
       <img class="nav-link" src="/assets/shopping-bag-line.svg" alt="">
-      <img class="nav-link" [routerLink]="appService.getUser() ? '/account': '/login'" src="/assets/user-line.svg" alt="">
+      <img class="nav-link" [routerLink]="appService.user ? '/account': '/login'" src="/assets/user-line.svg" alt="">
     </div>
   </div>
 </nav>
