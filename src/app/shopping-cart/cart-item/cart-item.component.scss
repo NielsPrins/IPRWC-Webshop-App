@@ -1,16 +1,24 @@
 .product-image {
+  display: block;
+  object-fit: contain;
   max-height: 200px;
+  max-width: 10vw;
+  width: auto;
+  height: auto;
 }
 
-.remove-button{
+.remove-button {
   display: flex;
-  img{
+
+  img {
     height: 21px;
     margin-right: 3px;
   }
 }
 
 .quantity-input {
+  min-width: 100px;
+
   input {
     width: 2.5rem;
     flex: none;

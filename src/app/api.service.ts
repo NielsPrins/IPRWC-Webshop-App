@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import axios, {AxiosResponse} from 'axios';
+import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import {Cookie} from 'ng2-cookies';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class ApiService {
   constructor() {
   }
 
-  private initApi() {
+  private initApi(): AxiosInstance {
     return axios.create({
       baseURL: this.apiServerUrl,
       headers: {
