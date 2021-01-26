@@ -21,31 +21,31 @@ export class ApiService {
   }
 
   public get(url: string): Promise<AxiosResponse> {
-    const axios = this.initApi();
-    return axios.get(url);
+    const api = this.initApi();
+    return api.get(url);
   }
 
   public post(url: string, data?: any): Promise<AxiosResponse> {
-    const axios = this.initApi();
-    return axios.post(url, data);
+    const api = this.initApi();
+    return api.post(url, data);
 
   }
 
   public put(url: string, data?: any): Promise<AxiosResponse> {
-    const axios = this.initApi();
-    return axios.put(url, data);
+    const api = this.initApi();
+    return api.put(url, data);
 
   }
 
   public patch(url: string, data?: any): Promise<AxiosResponse> {
-    const axios = this.initApi();
-    return axios.patch(url, data);
+    const api = this.initApi();
+    return api.patch(url, data);
 
   }
 
   public delete(url: string): Promise<AxiosResponse> {
-    const axios = this.initApi();
-    return axios.delete(url);
+    const api = this.initApi();
+    return api.delete(url);
   }
 
 }
