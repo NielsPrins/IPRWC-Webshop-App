@@ -3,13 +3,14 @@ import {Cookie} from 'ng2-cookies/ng2-cookies';
 import jwt_decode from 'jwt-decode';
 import Product from './shared/product.interface';
 import User from './shared/user.interface';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AppService {
   public user: User;
   public cart: { product: Product, quantity: number }[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
     const token = Cookie.get('user_token');
     if (token) {
       this.user = jwt_decode(token);
@@ -24,6 +25,12 @@ export class AppService {
   public setUserWithToken(token: string): void {
     Cookie.set('user_token', token, 7, '/');
     this.user = jwt_decode(token) as User;
+  }
+
+  public logUserOut(): void {
+    Cookie.delete('user_token', '/');
+    this.user = undefined;
+    this.router.navigate(['/login']);
   }
 
   public saveCartToCookie(): void {

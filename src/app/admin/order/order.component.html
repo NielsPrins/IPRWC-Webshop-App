@@ -1,0 +1,30 @@
+<div>Order ID: {{ order.id}} received at {{ formatDate(order.date) }}
+  <span class="badge" [ngClass]="{'received':'badge-warning','shipped':'badge-primary','delivered':'badge-success'}[order.status]">{{ order.status }}</span>
+</div>
+<div class="mb-3">By {{ order.user.name}} ({{ order.user.email}})</div>
+<button type="button" class="btn btn-info mr-3" (click)="changeStatus()">change status</button>
+<button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed">{{ isCollapsed ? 'Show' : 'Hide'}} products</button>
+
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="mt-3">
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th></th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of order.products">
+      <td class="p-1 product-image">
+        <img src="{{ product.image }}" (mousemove)="showBigImage($event)" (mouseleave)="hideBigImage($event)" alt="product-image" height="40px">
+        <img class="big-image-hover d-none" src="{{ product.image}}" alt="">
+      </td>
+      <td>{{ product.title }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>&euro; {{ product.price }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

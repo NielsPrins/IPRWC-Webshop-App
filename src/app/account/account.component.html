@@ -1,1 +1,41 @@
-<p>account works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <button (click)="logout()" class="btn btn-danger float-right">Logout</button>
+      <h5>{{ appService.user.name}}</h5>
+      {{ appService.user.email}}
+    </div>
+    <div class="col-md-12 ">
+      <h4>Your orders</h4>
+
+      <div *ngFor="let order of orders" class="order mt-3 mb-5">
+
+        <h6 class="mb-3">Order from {{ formatDate(order.date) }}
+          <span class="badge" [ngClass]="{'received':'badge-warning','shipped':'badge-primary','delivered':'badge-success'}[order.status]">{{ order.status }}</span>
+        </h6>
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of order.products">
+            <td class="p-1 product-image">
+              <img src="{{ product.image }}" (mousemove)="showBigImage($event)" (mouseleave)="hideBigImage($event)" alt="product-image" height="40px">
+              <img class="big-image-hover d-none" src="{{ product.image}}" alt="">
+            </td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>&euro; {{ product.price }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

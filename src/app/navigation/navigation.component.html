@@ -14,7 +14,10 @@
           <a class="nav-link" [routerLink]="'/shopping-cart'" (click)="isMenuCollapsed = true">Shopping cart ({{ appService.cart.length }})</a>
         </li>
         <li class="nav-item nav-button-text-replacement">
-          <a class="nav-link" [routerLink]="'/login'" (click)="isMenuCollapsed = true">Account</a>
+          <a class="nav-link" [routerLink]="appService.user ? '/account': '/login'" (click)="isMenuCollapsed = true">Account</a>
+        </li>
+        <li  *ngIf="appService.user && appService.user.permission_group == 'admin'" class="nav-item nav-button-text-replacement">
+          <a class="nav-link" [routerLink]="'/admin'" (click)="isMenuCollapsed = true">Admin</a>
         </li>
       </ul>
     </div>
@@ -24,6 +27,7 @@
         <span class="quantity badge badge-pill">{{ appService.cart.length }}</span>
       </div>
       <img class="nav-link" [routerLink]="appService.user ? '/account': '/login'" src="/assets/user-line.svg" alt="">
+      <img *ngIf="appService.user && appService.user.permission_group == 'admin'" class="nav-link" [routerLink]="'/admin'" src="/assets/tools-line.svg" alt="">
     </div>
   </div>
 </nav>

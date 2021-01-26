@@ -15,6 +15,9 @@ import {ProductComponent} from './homepage/product/product.component';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {AccountComponent} from './account/account.component';
 import {CartItemComponent} from './shopping-cart/cart-item/cart-item.component';
+import {AdminComponent} from './admin/admin.component';
+import {ManageProductsComponent} from './admin/manage-products/manage-products.component';
+import {OrderComponent} from './admin/order/order.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import {CartItemComponent} from './shopping-cart/cart-item/cart-item.component';
     ProductComponent,
     ShoppingCartComponent,
     AccountComponent,
-    CartItemComponent
+    CartItemComponent,
+    AdminComponent,
+    ManageProductsComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

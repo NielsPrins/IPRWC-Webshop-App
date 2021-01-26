@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <button [routerLink]="'/admin/manage-products'" class="btn btn-primary mr-2">Manage products</button>
+    </div>
+    <div class="col-md-12 ">
+      <h4 class="mb-3">All orders</h4>
+      <div *ngFor="let order of orders">
+        <app-order [order]="order"></app-order>
+        <hr class="my-4">
+      </div>
+    </div>
+  </div>
+</div>

@@ -40,6 +40,7 @@ export class ShoppingCartComponent implements OnInit {
           confirmButtonText: 'account'
         }).then(() => {
           this.appService.cart = [];
+          this.appService.saveCartToCookie();
           return this.router.navigate(['/account']);
         });
       }
