@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from '../app.service';
+import {ApiService} from '../api.service';
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,7 +12,7 @@ import {AppService} from '../app.service';
 export class ShoppingCartComponent implements OnInit {
   public totalPrice: number;
 
-  constructor(public appService: AppService) {
+  constructor(public appService: AppService, private apiService: ApiService, private router: Router) {
     this.getTotalCartPrice();
   }
 
@@ -25,7 +28,22 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   public orderShoppingCart(): void {
-    // @todo create order and redirect
+    this.apiService.post('/order', {
+      cart: this.appService.cart.map((cartItem) => {
+        return {productId: cartItem.product.id, quantity: cartItem.quantity};
+      })
+    }).then((res) => {
+      if (res.data.result) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Order has been placed',
+          confirmButtonText: 'account'
+        }).then(() => {
+          this.appService.cart = [];
+          return this.router.navigate(['/account']);
+        });
+      }
+    });
   }
 
 }
