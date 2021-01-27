@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import Product from '../../shared/product.interface';
 import {ApiService} from '../../api.service';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-manage-products',
@@ -11,7 +12,11 @@ import Swal from 'sweetalert2';
 export class ManageProductsComponent implements OnInit {
   public products: Product[] = [];
 
-  constructor(public apiService: ApiService) {
+  constructor(public apiService: ApiService, private router: Router) {
+    this.apiService.get('/user/isAdmin').catch(() => {
+      return this.router.navigate(['/login']);
+    });
+
     this.apiService.get('/product').then((res) => {
       this.products = res.data.result as Product[];
     });
