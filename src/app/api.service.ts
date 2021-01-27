@@ -6,7 +6,7 @@ import {Cookie} from 'ng2-cookies';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiServerUrl = 'http://localhost:5000/';
+  private apiServerUrl = 'https://iprwc-api.nielsprins.com/';
 
   constructor() {
   }
