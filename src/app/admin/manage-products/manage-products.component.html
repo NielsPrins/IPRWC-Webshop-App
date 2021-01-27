@@ -15,10 +15,11 @@
           <th scope="col"></th>
           <th scope="col">image</th>
           <th scope="col">price</th>
+          <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of products" [product]="product" product-row></tr>
+        <tr *ngFor="let product of products" [product]="product" (onProductDelete)="reloadProducts()" product-row></tr>
         </tbody>
       </table>
     </div>

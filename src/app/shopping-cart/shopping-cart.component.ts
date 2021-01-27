@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  public totalPrice: number;
+  public totalPrice: string;
 
   constructor(public appService: AppService, private apiService: ApiService, private router: Router) {
     this.getTotalCartPrice();
@@ -24,7 +24,7 @@ export class ShoppingCartComponent implements OnInit {
     for (const cartItem of this.appService.cart) {
       price += cartItem.product.price * cartItem.quantity;
     }
-    this.totalPrice = price;
+    this.totalPrice = price.toFixed(2);
   }
 
   public orderShoppingCart(): void {

@@ -1,8 +1,9 @@
 <div class="card">
   <img class="product-image card-img-top" src="{{ product.image }}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{ product.title }}</h5>
-    <p class="card-text">{{ product.description }}</p>
+    <h5 class="card-title mb-0">{{ product.title }}</h5>
+    <small>&euro; {{ product.price }}</small>
+    <p class="card-text mt-2">{{ product.description }}</p>
 
     <div class="input-group mb-3">
       <input [(ngModel)]="quantity" (keypress)="onlyIntegers($event)" type="number" class="form-control">
