@@ -1,0 +1,4 @@
+<div class="small-image-with-zoom">
+  <img src="{{ imageUrl }}" (mousemove)="showBigImage($event)" (mouseleave)="hideBigImage($event)" height="{{ imageSize }}" alt="">
+  <img class="big-image-hover d-none" src="{{ imageUrl }}" alt="">
+</div>

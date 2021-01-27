@@ -17,9 +17,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let product of order.products">
-      <td class="p-1 product-image">
-        <img src="{{ product.image }}" (mousemove)="showBigImage($event)" (mouseleave)="hideBigImage($event)" alt="product-image" height="40px">
-        <img class="big-image-hover d-none" src="{{ product.image}}" alt="">
+      <td class="p-1 product-image-td">
+        <app-small-image-with-zoom [imageUrl]="product.image"></app-small-image-with-zoom>
       </td>
       <td>{{ product.title }}</td>
       <td>{{ product.quantity }}</td>

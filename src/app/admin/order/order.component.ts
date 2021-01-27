@@ -22,18 +22,6 @@ export class OrderComponent implements OnInit {
     return new Date(date).toLocaleDateString();
   }
 
-  public showBigImage(event): void {
-    const bigImg = event.path[1].querySelector('.big-image-hover');
-    bigImg.classList.remove('d-none');
-    const imageHeight = parseFloat(getComputedStyle(bigImg, null).height.replace('px', ''));
-    bigImg.style.top = imageHeight / -2 + 24.5 + 'px';
-  }
-
-  public hideBigImage(event): void {
-    const bigImg = event.path[1].querySelector('.big-image-hover');
-    bigImg.classList.add('d-none');
-  }
-
   public changeStatus(): void {
     Swal.fire({
       title: 'Change status',

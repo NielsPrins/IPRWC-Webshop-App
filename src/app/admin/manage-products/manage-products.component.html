@@ -1,1 +1,26 @@
-<p>manage-products works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="alert alert-warning mr-3" role="alert">
+          The text in the product table is editable and saves automatically!
+        </div>
+        <button (click)="addNewProduct()" class="btn btn-success mb-3">Add product</button>
+      </div>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+          <th scope="col"></th>
+          <th scope="col">image</th>
+          <th scope="col">price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products" [product]="product" product-row></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

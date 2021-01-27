@@ -18,6 +18,8 @@ import {CartItemComponent} from './shopping-cart/cart-item/cart-item.component';
 import {AdminComponent} from './admin/admin.component';
 import {ManageProductsComponent} from './admin/manage-products/manage-products.component';
 import {OrderComponent} from './admin/order/order.component';
+import {ProductRowComponent} from './admin/manage-products/product-row/product-row.component';
+import {SmallImageWithZoomComponent} from './components/small-image-with-zoom/small-image-with-zoom.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {OrderComponent} from './admin/order/order.component';
     CartItemComponent,
     AdminComponent,
     ManageProductsComponent,
-    OrderComponent
+    OrderComponent,
+    ProductRowComponent,
+    SmallImageWithZoomComponent
   ],
   imports: [
     BrowserModule,

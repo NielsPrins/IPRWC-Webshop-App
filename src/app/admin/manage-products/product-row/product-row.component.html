@@ -1,0 +1,15 @@
+<td>
+  <input (change)="updateProduct()" [(ngModel)]="product.title" type="text">
+</td>
+<td>
+  <input (change)="updateProduct()" [(ngModel)]="product.description" type="text">
+</td>
+<td class="p-1 text-center">
+  <app-small-image-with-zoom [imageUrl]="product.image" imageSize="30"></app-small-image-with-zoom>
+</td>
+<td>
+  <input (change)="updateProduct()" [(ngModel)]="product.image" type="text">
+</td>
+<td>
+  <input (change)="updateProduct()" [(ngModel)]="product.price" type="text">
+</td>

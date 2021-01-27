@@ -10,13 +10,13 @@ import Product from '../shared/product.interface';
 export class HomepageComponent implements OnInit {
   public products: Product[] = [];
 
-  constructor(public api: ApiService) {
+  constructor(public apiService: ApiService) {
+    this.apiService.get('/product').then((res) => {
+      this.products = res.data.result as Product[];
+    });
   }
 
   ngOnInit(): void {
-    this.api.get('/product').then((res) => {
-      this.products = res.data.result as Product[];
-    });
   }
 
 }
