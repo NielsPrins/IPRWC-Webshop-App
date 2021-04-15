@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  frontend:
+  iprwc-app:
     build: .
     container_name: iprwc-app
     restart: unless-stopped
