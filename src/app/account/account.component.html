@@ -8,7 +8,7 @@
     <div class="col-md-12 ">
       <h4>Your orders</h4>
 
-      <div *ngIf="orders.length == 0">You dont have any orders yet</div>
+      <div *ngIf="!orders || orders.length == 0">You dont have any orders yet</div>
 
       <div *ngFor="let order of orders" class="order mt-3 mb-5">
 
